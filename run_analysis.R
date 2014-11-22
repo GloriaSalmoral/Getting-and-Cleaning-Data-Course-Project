@@ -90,7 +90,6 @@ names(dtLabeled) <- gsub('MeanFreq\\.',"Mean",names(dtLabeled))
 # 5. Creates a second, independent tidy data set with the average of each variable for each activity and each subject.
 ######################################################################################################################
 
-require(reshape2)
 dt_melt <- melt(dtLabeled, id = c("subject", "activityNum", "activityName"))
 dt_tidy <- dcast(dt_melt, subject + activityNum + activityName ~ variable, mean)
 write.table(dt_tidy, file = "./tidy_data.txt")
